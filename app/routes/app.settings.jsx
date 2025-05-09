@@ -13,25 +13,37 @@ import { TitleBar } from "@shopify/app-bridge-react";
 import { Form, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import { useState } from "react";
+import db from "../db.server";
 
 // --- Loader returns default user data ---
-export async function loader({ request }) {
-  return json({
-    name: "lihaz",
-    description: "test",
-  });
+export async function loader() {
+  let settings = await db.settings.findFirst();
+  console.log(settings);
+  return json(settings);
 }
 
 // --- Action handles submitted data ---
 export async function action({ request }) {
-  const formData = await request.formData();
-  const name = formData.get("name");
-  const description = formData.get("description");
+  let settings = await request.formData();
+  console.log(settings);
+  settings = Object.fromEntries(settings);
 
-  const data = { name, description };
-  console.log("📦 Form Data Received:", data); // 👈 logs to terminal during dev
+  // update database
+  await db.settings.upsert({
+    where: { id: "1" },
+    update: {
+      id: "1",
+      name: settings.name,
+      description: settings.description,
+    },
+    create: {
+      id: "1",
+      name: settings.name,
+      description: settings.description,
+    },
+  });
 
-  return json(data);
+  return json(settings);
 }
 
 export default function SettingsPage() {

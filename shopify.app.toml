@@ -3,7 +3,7 @@
 client_id = "b5f50176b1eb7f771f3cb6397603888a"
 name = "wishlist-app"
 handle = "wishlist-app-353"
-application_url = "https://particular-legendary-clips-posters.trycloudflare.com"
+application_url = "https://river-burning-breed-pilot.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://particular-legendary-clips-posters.trycloudflare.com/auth/callback",
-  "https://particular-legendary-clips-posters.trycloudflare.com/auth/shopify/callback",
-  "https://particular-legendary-clips-posters.trycloudflare.com/api/auth/callback"
+  "https://river-burning-breed-pilot.trycloudflare.com/auth/callback",
+  "https://river-burning-breed-pilot.trycloudflare.com/auth/shopify/callback",
+  "https://river-burning-breed-pilot.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

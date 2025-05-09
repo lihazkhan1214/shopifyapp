@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b5f50176b1eb7f771f3cb6397603888a"
+name = "wishlist-app"
+handle = "wishlist-app-353"
+application_url = "https://particular-legendary-clips-posters.trycloudflare.com"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://particular-legendary-clips-posters.trycloudflare.com/auth/callback",
+  "https://particular-legendary-clips-posters.trycloudflare.com/auth/shopify/callback",
+  "https://particular-legendary-clips-posters.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
